@@ -11,11 +11,7 @@ router.post("/", (req, res) => {
   const { title, channel, image, likes, views, comments, timestamp } = req.body;
   const video = { id: v4(), title, channel, image, likes, views, comments, timestamp };
   data.push(video);
-  // res.json(video);
   fs.writeFileSync("./data/videos.json", JSON.stringify(data), (err) => {
-    // if(err){
-    //   return res.status(500)
-    // }
   });
   res.status(201).json(video);
 });
