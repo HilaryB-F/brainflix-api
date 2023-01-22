@@ -3,7 +3,9 @@ const app = express();
 const videos = require("./routes/video");
 const cors = require("cors");
 
+
 app.use(cors());
+app.use(express.json())
 
 app.use("/", (req, res, next) => {
   next();
