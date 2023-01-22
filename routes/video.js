@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
   res.json(data);
 });
 router.post("/", (req, res) => {
-  const { title, channel, image, likes, views } = req.body;
-  const video = { id: v4(), title, channel, image, likes, views };
+  const { title, channel, image, likes, views, comments, timestamp } = req.body;
+  const video = { id: v4(), title, channel, image, likes, views, comments, timestamp };
   data.push(video);
   // res.json(video);
   fs.writeFileSync("./data/videos.json", JSON.stringify(data), (err) => {
