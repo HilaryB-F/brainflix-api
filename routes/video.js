@@ -8,10 +8,16 @@ router.get("/", (req, res) => {
   res.json(data);
 });
 router.post("/", (req, res) => {
-  const { title, description, image } = req.body;
-  const video = { id: v4(), title, description, image };
+  const { title, channel, image, likes, views } = req.body;
+  const video = { id: v4(), title, channel, image, likes, views };
   data.push(video);
-  res.json(video);
+  // res.json(video);
+  fs.writeFileSync("./data/videos.json", JSON.stringify(data), (err) => {
+    // if(err){
+    //   return res.status(500)
+    // }
+  });
+  res.status(201).json(video);
 });
 
 router.get("/:id", (req, res) => {
